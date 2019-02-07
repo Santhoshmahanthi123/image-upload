@@ -3,12 +3,16 @@ const app = express();
 const multer = require('multer'); 
 const User = require('./model/user')
 const path = require('path');
-const port = process.env.PORT | 3000;
+const bodyParser = require("body-parser");
+const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
+app.use(bodyParser.urlencoded({extended : true}));
+
 mongoose.connect('mongodb://Venkatnatraj:natraj95@ds123625.mlab.com:23625/image', { useNewUrlParser: true })
 app.get('/',(req,res)=>{
     res.send('home')
 })
+
 app.use((req,res,next)=>{
     //* will give access to any origin
  res.header('Access-Control-Allow-Origin','*');
