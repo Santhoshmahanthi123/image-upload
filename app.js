@@ -3,7 +3,7 @@ const app = express();
 const multer = require('multer'); 
 const User = require('./model/user')
 const path = require('path');
-const port = process.env.POST | 3000;
+const port = process.env.PORT | 3000;
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://Venkatnatraj:natraj95@ds123625.mlab.com:23625/image', { useNewUrlParser: true })
 app.get('/',(req,res)=>{
