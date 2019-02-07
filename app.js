@@ -17,10 +17,10 @@ app.use((req,res,next)=>{
     //* will give access to any origin
  res.header('Access-Control-Allow-Origin','*');
  res.header('Access-Control-Allow-Origin','Origin,X-Requested-With,Content-Type,Accept');
-//  if(req.method === 'OPTIONS'){
-//      res.header('Access-Control-Allow-Methods','PUT, POST, PATCH, DELETE, GET');
-//      return res.status(200).json({});
-//  }
+ if(req.method === 'OPTIONS'){
+     res.header('Access-Control-Allow-Methods','PUT, POST, PATCH, DELETE, GET');
+     return res.status(200).json({});
+ }
  next();
 });
 
@@ -64,7 +64,7 @@ app.post('/',upload.single('image'),(req,res)=>{
         console.log(result);
         res.status(200).json({
             message : "user created ",
-            createdFood : user,
+            createdUser : user,
            
         });
     
