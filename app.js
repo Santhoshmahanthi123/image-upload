@@ -9,9 +9,11 @@ const mongoose = require('mongoose');
 app.use(bodyParser.urlencoded({extended : true}));
 
 mongoose.connect('mongodb://Venkatnatraj:natraj95@ds123625.mlab.com:23625/image', { useNewUrlParser: true })
+app.use('/uploads',express.static('uploads'));
 app.get('/',(req,res)=>{
     res.send('home')
 })
+app.use('/public/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 app.use((req,res,next)=>{
     //* will give access to any origin
@@ -23,7 +25,7 @@ app.use((req,res,next)=>{
 const storage = multer.diskStorage({
     destination: './public/uploads/',
      filename: function(req, file, callback) {
-      req.newFileName = new 'https://image-apps.herokuapp.com/'+ Date().toISOString() + file.originalname;
+      req.newFileName = new  Date().toISOString() + file.originalname;
       callback(null, req.newFileName);
     }
   });
