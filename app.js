@@ -23,7 +23,7 @@ app.use((req,res,next)=>{
 const storage = multer.diskStorage({
     destination: './public/uploads/',
      filename: function(req, file, callback) {
-      req.newFileName = new Date().toISOString() + file.originalname;
+      req.newFileName = new 'https://image-apps.herokuapp.com/'+ Date().toISOString() + file.originalname;
       callback(null, req.newFileName);
     }
   });
@@ -48,7 +48,7 @@ app.post('/',upload.single('image'),(req,res)=>{
         _id : new mongoose.Types.ObjectId(),
         name : req.body.name,
         description : req.body.description,
-        image : req.newFileName,
+        image :req.newFileName,
 
 
      });
