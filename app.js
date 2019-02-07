@@ -23,7 +23,7 @@ app.use((req,res,next)=>{
 
 //setting storage
 const storage = multer.diskStorage({
-    destination: './public/uploads/',
+    destination: '/public/uploads/',
      filename: function(req, file, callback) {
       req.newFileName = new  Date().toISOString() + file.originalname;
       callback(null, req.newFileName);
@@ -51,8 +51,6 @@ app.post('/',upload.single('image'),(req,res)=>{
         name : req.body.name,
         description : req.body.description,
         image :req.newFileName,
-
-
      });
     
     user
